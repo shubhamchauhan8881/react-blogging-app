@@ -47,13 +47,10 @@ class Register(APIView):
         data = serializer.RegisterUserSerializer( data=request.data)
         if data.is_valid(raise_exception=True):
             data.save()
-            sleep(10)
-
             return Response(data=data.data, content_type='application/json')
         else:
             sleep(10)
             return Response(data=data.errors, content_type='application/json')
-
 
 
 class UserNotifications(generics.ListAPIView):
